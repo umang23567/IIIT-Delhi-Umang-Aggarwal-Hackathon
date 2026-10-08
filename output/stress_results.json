@@ -1,0 +1,382 @@
+[
+ {
+  "event_type": "Credit Event",
+  "impact": 10.0,
+  "entity": "BA",
+  "scope": "company",
+  "scale": 1.43,
+  "value_before": 2848757272.0,
+  "value_after": 2713705496.0,
+  "pnl": -135051776.0,
+  "pnl_pct": -4.741,
+  "by_asset_type": {
+   "Bond": -109076191.0,
+   "Equity": -12079186.0,
+   "Loan": -8314527.0,
+   "Swap": -5345291.0,
+   "Option": -236580.0
+  },
+  "by_sector": {
+   "Consumer": -48447843.0,
+   "Technology": -27904470.0,
+   "Energy": -26105622.0,
+   "Financials": -19940421.0,
+   "Industrials": -6501731.0,
+   "Healthcare": -6151690.0
+  },
+  "top_losers": [
+   {
+    "position_id": "P024",
+    "asset_type": "Bond",
+    "entity": "WMT",
+    "pnl": -15146248.0
+   },
+   {
+    "position_id": "P032",
+    "asset_type": "Bond",
+    "entity": "CVX",
+    "pnl": -13422005.0
+   },
+   {
+    "position_id": "P021",
+    "asset_type": "Bond",
+    "entity": "TSLA",
+    "pnl": -12799407.0
+   },
+   {
+    "position_id": "P028",
+    "asset_type": "Bond",
+    "entity": "AAPL",
+    "pnl": -11936064.0
+   },
+   {
+    "position_id": "P030",
+    "asset_type": "Bond",
+    "entity": "BAC",
+    "pnl": -11508478.0
+   },
+   {
+    "position_id": "P033",
+    "asset_type": "Bond",
+    "entity": "TSLA",
+    "pnl": -9435662.0
+   },
+   {
+    "position_id": "P029",
+    "asset_type": "Bond",
+    "entity": "CVX",
+    "pnl": -8802772.0
+   },
+   {
+    "position_id": "P025",
+    "asset_type": "Bond",
+    "entity": "BA",
+    "pnl": -6304325.0
+   }
+  ]
+ },
+ {
+  "event_type": "Geopolitical",
+  "impact": 9.0,
+  "entity": "MARKET",
+  "scope": "market",
+  "scale": 1.29,
+  "value_before": 2848757272.0,
+  "value_after": 2779605469.0,
+  "pnl": -69151803.0,
+  "pnl_pct": -2.427,
+  "by_asset_type": {
+   "Bond": -40826249.0,
+   "Equity": -14847623.0,
+   "Swap": -9621524.0,
+   "Loan": -3072576.0,
+   "Option": -783830.0
+  },
+  "by_sector": {
+   "Technology": -23538195.0,
+   "Consumer": -16667954.0,
+   "Financials": -10883199.0,
+   "Energy": -10830739.0,
+   "Healthcare": -5687050.0,
+   "Industrials": -1544666.0
+  },
+  "top_losers": [
+   {
+    "position_id": "P024",
+    "asset_type": "Bond",
+    "entity": "WMT",
+    "pnl": -5793440.0
+   },
+   {
+    "position_id": "P032",
+    "asset_type": "Bond",
+    "entity": "CVX",
+    "pnl": -5133917.0
+   },
+   {
+    "position_id": "P021",
+    "asset_type": "Bond",
+    "entity": "TSLA",
+    "pnl": -4895773.0
+   },
+   {
+    "position_id": "P028",
+    "asset_type": "Bond",
+    "entity": "AAPL",
+    "pnl": -4565545.0
+   },
+   {
+    "position_id": "P030",
+    "asset_type": "Bond",
+    "entity": "BAC",
+    "pnl": -4401993.0
+   },
+   {
+    "position_id": "P054",
+    "asset_type": "Equity",
+    "entity": "GS",
+    "pnl": -4282791.0
+   },
+   {
+    "position_id": "P033",
+    "asset_type": "Bond",
+    "entity": "TSLA",
+    "pnl": -3609141.0
+   },
+   {
+    "position_id": "P029",
+    "asset_type": "Bond",
+    "entity": "CVX",
+    "pnl": -3367060.0
+   }
+  ]
+ },
+ {
+  "event_type": "Cyber/Operational",
+  "impact": 8.9,
+  "entity": "PFE",
+  "scope": "company",
+  "scale": 1.27,
+  "value_before": 2848757272.0,
+  "value_after": 2815238661.0,
+  "pnl": -33518611.0,
+  "pnl_pct": -1.177,
+  "by_asset_type": {
+   "Bond": -21772213.0,
+   "Equity": -9233185.0,
+   "Loan": -2254839.0,
+   "Option": -258374.0,
+   "Swap": 0.0
+  },
+  "by_sector": {
+   "Consumer": -9654618.0,
+   "Technology": -7565749.0,
+   "Healthcare": -5924928.0,
+   "Energy": -5297573.0,
+   "Financials": -4273565.0,
+   "Industrials": -802177.0
+  },
+  "top_losers": [
+   {
+    "position_id": "P056",
+    "asset_type": "Equity",
+    "entity": "PFE",
+    "pnl": -3694754.0
+   },
+   {
+    "position_id": "P024",
+    "asset_type": "Bond",
+    "entity": "WMT",
+    "pnl": -3033036.0
+   },
+   {
+    "position_id": "P032",
+    "asset_type": "Bond",
+    "entity": "CVX",
+    "pnl": -2687757.0
+   },
+   {
+    "position_id": "P021",
+    "asset_type": "Bond",
+    "entity": "TSLA",
+    "pnl": -2563081.0
+   },
+   {
+    "position_id": "P028",
+    "asset_type": "Bond",
+    "entity": "AAPL",
+    "pnl": -2390197.0
+   },
+   {
+    "position_id": "P030",
+    "asset_type": "Bond",
+    "entity": "BAC",
+    "pnl": -2304573.0
+   },
+   {
+    "position_id": "P033",
+    "asset_type": "Bond",
+    "entity": "TSLA",
+    "pnl": -1889491.0
+   },
+   {
+    "position_id": "P029",
+    "asset_type": "Bond",
+    "entity": "CVX",
+    "pnl": -1762755.0
+   }
+  ]
+ },
+ {
+  "event_type": "Macroeconomic",
+  "impact": 8.3,
+  "entity": "MARKET",
+  "scope": "market",
+  "scale": 1.19,
+  "value_before": 2848757272.0,
+  "value_after": 2745318391.0,
+  "pnl": -103438880.0,
+  "pnl_pct": -3.631,
+  "by_asset_type": {
+   "Bond": -122919031.0,
+   "Equity": -11612217.0,
+   "Loan": -1700159.0,
+   "Option": -481911.0,
+   "Swap": 33274437.0
+  },
+  "by_sector": {
+   "Consumer": -61691610.0,
+   "Financials": -15373350.0,
+   "Energy": -14089802.0,
+   "Technology": -12450268.0,
+   "Industrials": -4580237.0,
+   "Healthcare": 4746387.0
+  },
+  "top_losers": [
+   {
+    "position_id": "P024",
+    "asset_type": "Bond",
+    "entity": "WMT",
+    "pnl": -17442798.0
+   },
+   {
+    "position_id": "P032",
+    "asset_type": "Bond",
+    "entity": "CVX",
+    "pnl": -15457117.0
+   },
+   {
+    "position_id": "P021",
+    "asset_type": "Bond",
+    "entity": "TSLA",
+    "pnl": -14740117.0
+   },
+   {
+    "position_id": "P028",
+    "asset_type": "Bond",
+    "entity": "AAPL",
+    "pnl": -13745870.0
+   },
+   {
+    "position_id": "P030",
+    "asset_type": "Bond",
+    "entity": "BAC",
+    "pnl": -13253451.0
+   },
+   {
+    "position_id": "P033",
+    "asset_type": "Bond",
+    "entity": "TSLA",
+    "pnl": -10866344.0
+   },
+   {
+    "position_id": "P029",
+    "asset_type": "Bond",
+    "entity": "CVX",
+    "pnl": -10137493.0
+   },
+   {
+    "position_id": "P045",
+    "asset_type": "Swap",
+    "entity": "JNJ",
+    "pnl": -9324544.0
+   }
+  ]
+ },
+ {
+  "event_type": "Regulatory/Legal",
+  "impact": 8.3,
+  "entity": "JPM",
+  "scope": "company",
+  "scale": 1.19,
+  "value_before": 2848757272.0,
+  "value_after": 2824699227.0,
+  "pnl": -24058045.0,
+  "pnl_pct": -0.845,
+  "by_asset_type": {
+   "Bond": -18625980.0,
+   "Equity": -5947563.0,
+   "Loan": -775265.0,
+   "Swap": 0.0,
+   "Option": 1290763.0
+  },
+  "by_sector": {
+   "Consumer": -8162563.0,
+   "Financials": -5566857.0,
+   "Technology": -5267429.0,
+   "Energy": -3704549.0,
+   "Healthcare": -796235.0,
+   "Industrials": -560413.0
+  },
+  "top_losers": [
+   {
+    "position_id": "P030",
+    "asset_type": "Bond",
+    "entity": "BAC",
+    "pnl": -3304408.0
+   },
+   {
+    "position_id": "P054",
+    "asset_type": "Equity",
+    "entity": "GS",
+    "pnl": -2369811.0
+   },
+   {
+    "position_id": "P021",
+    "asset_type": "Bond",
+    "entity": "TSLA",
+    "pnl": -2357423.0
+   },
+   {
+    "position_id": "P024",
+    "asset_type": "Bond",
+    "entity": "WMT",
+    "pnl": -2121421.0
+   },
+   {
+    "position_id": "P032",
+    "asset_type": "Bond",
+    "entity": "CVX",
+    "pnl": -1879920.0
+   },
+   {
+    "position_id": "P033",
+    "asset_type": "Bond",
+    "entity": "TSLA",
+    "pnl": -1737881.0
+   },
+   {
+    "position_id": "P028",
+    "asset_type": "Bond",
+    "entity": "AAPL",
+    "pnl": -1671795.0
+   },
+   {
+    "position_id": "P029",
+    "asset_type": "Bond",
+    "entity": "CVX",
+    "pnl": -1232938.0
+   }
+  ]
+ }
+]
