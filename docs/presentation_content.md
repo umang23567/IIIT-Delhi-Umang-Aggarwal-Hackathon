@@ -55,7 +55,7 @@
 - **Scenario Tested:** Fitch Rating Downgrade of Boeing (BA) senior debt to BBB-.
   - *NLP Signal:* Impact: 9.9/10, FinBERT Sentiment: -0.82, Event: Credit Event.
   - *Policy Gate:* **ACCEPTED** (Trigger threshold $\ge 7.0$).
-  - *Wholesale Impact:* Total Portfolio Loss of **-$13.15M (-3.59%)** on a $365M book.
+  - *Wholesale Impact:* Total Portfolio Loss of **-$13.15M (-3.59%)** on an approximately $366.6M book under the prototype valuation convention.
   - *Attribution:* Loan provisions jumped on 2.5x PD stress; Boeing 5-year bonds dropped on +220 bps spread widening; unaffected market sectors remained insulated.
 - **Module A Rebalancing Result:** Successfully adjusted 12 S&P constituents according to sentiment velocity under turnover bounds.
 

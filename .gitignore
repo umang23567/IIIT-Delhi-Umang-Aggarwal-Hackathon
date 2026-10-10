@@ -42,6 +42,17 @@ build/
 *.sqlite
 *.sqlite3
 output/
+data/runtime/
+
+# Locally downloaded external datasets
+# Keep the small Financial PhraseBank evaluation file if its redistribution
+# terms permit; keep the large raw news collection and archives local.
+data/external/us_financial_news/
+data/external/US Financial News Articles/
+data/external/**/*.zip
+data/external/**/*.json
+!data/external/financial_phrasebank/
+!data/external/financial_phrasebank/financial_phrasebank.csv
 
 # Local model and tool caches
 .cache/

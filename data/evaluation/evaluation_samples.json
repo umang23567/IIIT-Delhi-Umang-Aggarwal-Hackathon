@@ -1,0 +1,50 @@
+[
+  {
+    "id": "eval_01",
+    "text": "Apple reported record profit and strong revenue growth above expectations.",
+    "ticker": "AAPL",
+    "sentiment": "POSITIVE",
+    "event_type": "General Financial News",
+    "impact_score": 3
+  },
+  {
+    "id": "eval_02",
+    "text": "Boeing was downgraded after a severe liquidity crisis and rising default risk.",
+    "ticker": "BA",
+    "sentiment": "NEGATIVE",
+    "event_type": "Credit Event",
+    "impact_score": 8
+  },
+  {
+    "id": "eval_03",
+    "text": "The Federal Reserve announced an emergency interest rate hike as inflation accelerated.",
+    "ticker": null,
+    "sentiment": "NEGATIVE",
+    "event_type": "Macroeconomic",
+    "impact_score": 8
+  },
+  {
+    "id": "eval_04",
+    "text": "Citigroup received a regulatory fine and a consent order over compliance failures.",
+    "ticker": "C",
+    "sentiment": "NEGATIVE",
+    "event_type": "Regulatory/Legal",
+    "impact_score": 7
+  },
+  {
+    "id": "eval_05",
+    "text": "NVIDIA unveiled a new product architecture with robust demand and higher guidance.",
+    "ticker": "NVDA",
+    "sentiment": "POSITIVE",
+    "event_type": "Product Launch",
+    "impact_score": 3
+  },
+  {
+    "id": "eval_06",
+    "text": "Markets were unchanged while analysts reviewed routine quarterly disclosures.",
+    "ticker": null,
+    "sentiment": "NEUTRAL",
+    "event_type": "General Financial News",
+    "impact_score": 2
+  }
+]

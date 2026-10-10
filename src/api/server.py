@@ -16,7 +16,7 @@ app = FastAPI(
 
 # Initialize engines
 store = RiskSignalStore()
-nlp_engine = NLPFinancialRiskEngine(enable_transformer=False) # FastAPI default lightweight; UI loads transformer
+nlp_engine = NLPFinancialRiskEngine(enable_transformer=True, enable_ner=True)
 rebalancer = TacticalIndexRebalancer()
 stress_engine = WholesalePortfolioStressEngine()
 
@@ -36,6 +36,8 @@ class StressTestRequest(BaseModel):
     confidence: float
     source_name: str
     affected_ticker: Optional[str] = None
+    corroboration_count: int = 1
+    novelty_score: float = 1.0
 
 @app.get("/")
 def root():
@@ -66,7 +68,7 @@ def get_signals(
 
 @app.post("/internal/ingest")
 def ingest_article(req: IngestArticleRequest):
-    raw = RawArticle(**req.dict())
+    raw = RawArticle(**req.model_dump())
     signal = nlp_engine.process_article(raw)
     if not signal:
         return {"status": "deduplicated_or_skipped", "article_id": req.article_id}
@@ -92,7 +94,9 @@ def run_portfolio_stress(req: StressTestRequest):
         impact_score=req.impact_score,
         confidence=req.confidence,
         source_name=req.source_name,
-        affected_ticker=req.affected_ticker
+        affected_ticker=req.affected_ticker,
+        corroboration_count=req.corroboration_count,
+        novelty_score=req.novelty_score,
     )
     return result
 

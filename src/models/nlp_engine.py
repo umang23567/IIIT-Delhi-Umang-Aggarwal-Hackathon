@@ -20,15 +20,30 @@ class NLPFinancialRiskEngine:
     5. Multi-Factor Impact Severity Scoring (1-10)
     6. Persistence into Global Signal Database
     """
-    def __init__(self, enable_transformer: bool = True):
+    def __init__(
+        self,
+        enable_transformer: bool = True,
+        allow_sentiment_fallback: bool = False,
+        enable_ner: bool = False,
+    ):
         self.cleaner = ArticleCleaner()
-        self.entity_resolver = EntityResolver()
-        self.sentiment_engine = FinBERTSentimentEngine(enable_transformer=enable_transformer)
+        self.entity_resolver = EntityResolver(enable_ner=enable_ner)
+        self.sentiment_engine = FinBERTSentimentEngine(
+            enable_transformer=enable_transformer,
+            allow_fallback=allow_sentiment_fallback,
+        )
         self.event_classifier = EventTaxonomyClassifier()
         self.impact_engine = ImpactScoringEngine()
         self.store = RiskSignalStore()
 
     def process_article(self, raw: RawArticle) -> Optional[StructuredRiskSignal]:
+        # Persist the source record before analysis so every signal has an
+        # auditable input and duplicates remain suppressed after restarts.
+        raw.content_hash = raw.content_hash or raw.compute_hash()
+        if not self.store.save_raw_article(raw):
+            logger.info("Skipping persisted duplicate article %s", raw.article_id)
+            return None
+
         # 1. Clean and Deduplicate
         clean = self.cleaner.process(raw)
         if clean.is_duplicate:
@@ -87,6 +102,7 @@ class NLPFinancialRiskEngine:
 
         # 7. Persist to DB
         self.store.save_signal(signal)
+        self.store.recompute_corroboration()
         return signal
 
     def process_batch(self, raw_articles: List[RawArticle]) -> List[StructuredRiskSignal]:

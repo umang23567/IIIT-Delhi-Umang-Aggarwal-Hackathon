@@ -36,6 +36,8 @@ class StressTestResult(BaseModel):
     total_pnl_loss: float
     total_percentage_loss: float
     asset_class_losses: Dict[str, float]
+    issuer_losses: Dict[str, float]
+    sector_losses: Dict[str, float]
     position_impacts: List[PositionStressImpact]
     assumptions: List[str]
 
@@ -48,14 +50,21 @@ class WholesalePortfolioStressEngine:
     - Interest Rate Swaps: P&L = -DV01 * Rate Change
     - Wholesale Loans: Loss = EAD * (Stressed PD * Stressed LGD - Base PD * Base LGD)
     """
-    def __init__(self, portfolio_path: str = "data/synthetic_portfolio.json"):
+    def __init__(self, portfolio_path: str = "data/portfolios/synthetic_portfolio.json"):
         with open(portfolio_path, "r", encoding="utf-8") as f:
             self.portfolio_data = json.load(f)
         self.positions = self.portfolio_data["positions"]
 
-    def evaluate_trigger(self, impact_score: float, confidence: float, source_type: str) -> StressPolicyDecision:
+    def evaluate_trigger(
+        self,
+        impact_score: float,
+        confidence: float,
+        source_type: str,
+        corroboration_count: int = 1,
+        novelty_score: float = 1.0,
+    ) -> StressPolicyDecision:
         """Policy gate evaluating if a signal warrants a formal stress test."""
-        # Threshold: Impact >= 7.0 and Confidence >= 0.70
+        # Formal stress testing requires materiality and model confidence.
         if impact_score < 7.0:
             return StressPolicyDecision(
                 accepted=False,
@@ -66,6 +75,12 @@ class WholesalePortfolioStressEngine:
             return StressPolicyDecision(
                 accepted=False,
                 trigger_reason=f"Model confidence {confidence:.2f} below risk threshold 0.65 (Needs human verification)",
+                scenario_id="NO_TRIGGER"
+            )
+        if corroboration_count < 2:
+            return StressPolicyDecision(
+                accepted=False,
+                trigger_reason="Only one independent source corroborates this event; human verification required.",
                 scenario_id="NO_TRIGGER"
             )
         return StressPolicyDecision(
@@ -82,10 +97,36 @@ class WholesalePortfolioStressEngine:
         confidence: float,
         source_name: str,
         affected_ticker: Optional[str] = None,
-        custom_positions: Optional[List[Dict[str, Any]]] = None
+        custom_positions: Optional[List[Dict[str, Any]]] = None,
+        corroboration_count: int = 1,
+        novelty_score: float = 1.0,
     ) -> StressTestResult:
-        policy = self.evaluate_trigger(impact_score, confidence, source_name)
-        
+        policy = self.evaluate_trigger(
+            impact_score,
+            confidence,
+            source_name,
+            corroboration_count=corroboration_count,
+            novelty_score=novelty_score,
+        )
+        if not policy.accepted:
+            return StressTestResult(
+                run_id=f"RUN_{abs(hash(signal_title)) % 1000000}",
+                event_title=signal_title,
+                event_type=event_type,
+                impact_score=impact_score,
+                scenario_name="Not executed - policy gate rejected",
+                policy_decision=policy,
+                total_baseline_portfolio_value=0.0,
+                total_stressed_portfolio_value=0.0,
+                total_pnl_loss=0.0,
+                total_percentage_loss=0.0,
+                asset_class_losses={"Equity": 0.0, "Bond": 0.0, "Loan": 0.0, "Swap": 0.0},
+                issuer_losses={},
+                sector_losses={},
+                position_impacts=[],
+                assumptions=[policy.trigger_reason],
+            )
+
         # Determine calibrated shock parameters based on event type
         shocks = self._map_event_to_shocks(event_type, impact_score, affected_ticker)
 
@@ -94,6 +135,8 @@ class WholesalePortfolioStressEngine:
         total_stress = 0.0
         position_results: List[PositionStressImpact] = []
         asset_losses = {"Equity": 0.0, "Bond": 0.0, "Loan": 0.0, "Swap": 0.0}
+        issuer_losses: Dict[str, float] = {}
+        sector_losses: Dict[str, float] = {}
 
         for p in positions_to_eval:
             a_type = p["asset_type"]
@@ -114,6 +157,8 @@ class WholesalePortfolioStressEngine:
                 stressed_mv = max(0.0, mv - loss)
                 total_stress += stressed_mv
                 asset_losses["Equity"] += loss
+                issuer_losses[p["issuer"]] = issuer_losses.get(p["issuer"], 0.0) + loss
+                sector_losses[p["sector"]] = sector_losses.get(p["sector"], 0.0) + loss
 
                 pct = (-loss / mv) * 100.0 if mv > 0 else 0.0
                 position_results.append(PositionStressImpact(
@@ -145,6 +190,8 @@ class WholesalePortfolioStressEngine:
                 stressed_mv = max(0.0, mv - loss)
                 total_stress += stressed_mv
                 asset_losses["Bond"] += loss
+                issuer_losses[p["issuer"]] = issuer_losses.get(p["issuer"], 0.0) + loss
+                sector_losses[p["sector"]] = sector_losses.get(p["sector"], 0.0) + loss
 
                 pct = (-loss / mv) * 100.0 if mv > 0 else 0.0
                 position_results.append(PositionStressImpact(
@@ -178,6 +225,8 @@ class WholesalePortfolioStressEngine:
                 stressed_value = ead - loss
                 total_stress += stressed_value
                 asset_losses["Loan"] += loss
+                issuer_losses[p["issuer"]] = issuer_losses.get(p["issuer"], 0.0) + loss
+                sector_losses[p["sector"]] = sector_losses.get(p["sector"], 0.0) + loss
 
                 pct = (-loss / ead) * 100.0 if ead > 0 else 0.0
                 position_results.append(PositionStressImpact(
@@ -205,6 +254,8 @@ class WholesalePortfolioStressEngine:
                 stressed_mv = (notional * 0.02) - loss
                 total_stress += stressed_mv
                 asset_losses["Swap"] += loss
+                issuer_losses[p["issuer"]] = issuer_losses.get(p["issuer"], 0.0) + loss
+                sector_losses[p["sector"]] = sector_losses.get(p["sector"], 0.0) + loss
 
                 pct = (-loss / (notional * 0.02)) * 100.0 if notional > 0 else 0.0
                 position_results.append(PositionStressImpact(
@@ -235,6 +286,8 @@ class WholesalePortfolioStressEngine:
             total_pnl_loss=round(total_loss, 2),
             total_percentage_loss=round(pct_loss, 2),
             asset_class_losses={k: round(v, 2) for k, v in asset_losses.items()},
+            issuer_losses={k: round(v, 2) for k, v in issuer_losses.items() if v > 0},
+            sector_losses={k: round(v, 2) for k, v in sector_losses.items() if v > 0},
             position_impacts=position_results,
             assumptions=shocks["assumptions"]
         )

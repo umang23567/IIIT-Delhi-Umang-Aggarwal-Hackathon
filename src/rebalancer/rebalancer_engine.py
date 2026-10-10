@@ -30,7 +30,7 @@ class TacticalIndexRebalancer:
         w_target_i = w_raw_i / sum(w_raw)
     Clamped to min/max risk bounds per asset (e.g., 2% to 18%).
     """
-    def __init__(self, master_path: str = "data/security_master.json", alpha: float = 0.5):
+    def __init__(self, master_path: str = "data/reference/security_master.json", alpha: float = 0.5):
         self.alpha = alpha
         with open(master_path, "r", encoding="utf-8") as f:
             self.master_data = json.load(f)
@@ -42,12 +42,27 @@ class TacticalIndexRebalancer:
         # In-memory history of weights over time
         self.history: List[Dict[str, Any]] = []
 
-    def rebalance(self, signals: List[Any], alpha: Optional[float] = None) -> RebalanceRunResult:
+    def rebalance(
+        self,
+        signals: List[Any],
+        alpha: Optional[float] = None,
+        allowed_tickers: Optional[List[str]] = None,
+    ) -> RebalanceRunResult:
         if alpha is not None:
             self.alpha = alpha
 
+        if allowed_tickers is None:
+            selected_universe = self.universe
+        else:
+            allowed = set(allowed_tickers)
+            selected_universe = [item for item in self.universe if item["ticker"] in allowed]
+            if not selected_universe:
+                raise ValueError("The requested allocation universe contains no supported securities.")
+
+        initial_weight = 1.0 / len(selected_universe)
+
         # Aggregate sentiment by ticker
-        ticker_sentiment: Dict[str, List[float]] = {item["ticker"]: [] for item in self.universe}
+        ticker_sentiment: Dict[str, List[float]] = {item["ticker"]: [] for item in selected_universe}
         for sig in signals:
             t = getattr(sig, "ticker", None) or (sig.get("ticker") if isinstance(sig, dict) else None)
             s = getattr(sig, "sentiment_score", 0.0) if hasattr(sig, "sentiment_score") else sig.get("sentiment_score", 0.0)
@@ -55,13 +70,13 @@ class TacticalIndexRebalancer:
                 ticker_sentiment[t].append(s)
 
         raw_weights = {}
-        for item in self.universe:
+        for item in selected_universe:
             t = item["ticker"]
             scores = ticker_sentiment[t]
             avg_s = sum(scores) / len(scores) if scores else 0.0
             
             # Sentiment adjustment
-            adjusted = self.initial_weight * (1.0 + self.alpha * avg_s)
+            adjusted = initial_weight * (1.0 + self.alpha * avg_s)
             # Bound check: between 1% and 25%
             raw_weights[t] = max(0.01, min(0.25, adjusted))
 
@@ -71,10 +86,10 @@ class TacticalIndexRebalancer:
 
         turnover = 0.0
         positions = []
-        for item in self.universe:
+        for item in selected_universe:
             t = item["ticker"]
             target_w = normalized_weights[t]
-            delta = target_w - self.initial_weight
+            delta = target_w - initial_weight
             turnover += abs(delta)
             scores = ticker_sentiment[t]
             avg_s = sum(scores) / len(scores) if scores else 0.0
@@ -83,7 +98,7 @@ class TacticalIndexRebalancer:
                 ticker=t,
                 company_name=item["name"],
                 sector=item["sector"],
-                initial_weight=round(self.initial_weight, 4),
+                initial_weight=round(initial_weight, 4),
                 target_weight=round(target_w, 4),
                 weight_delta=round(delta, 4),
                 current_sentiment=round(avg_s, 3),

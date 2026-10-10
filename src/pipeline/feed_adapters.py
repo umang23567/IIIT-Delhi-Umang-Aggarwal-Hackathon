@@ -15,7 +15,7 @@ class FeedAdapter:
 
 class ReplayAdapter(FeedAdapter):
     """Deterministic scenario replayer from curated dataset."""
-    def __init__(self, filepath: str = "data/replay_feed.json"):
+    def __init__(self, filepath: str = "data/demo/replay_feed.json"):
         self.filepath = filepath
 
     def fetch_articles(self) -> List[RawArticle]:

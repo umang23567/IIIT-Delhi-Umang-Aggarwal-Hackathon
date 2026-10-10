@@ -76,5 +76,18 @@
     "expected_event": "Product Launch",
     "expected_severity_min": 1.5,
     "should_trigger_stress": false
+  },
+  {
+    "feed_id": "REPLAY_007",
+    "source_type": "News",
+    "source_name": "Bloomberg Markets",
+    "url": "https://bloomberg.com/news/articles/boeing-rating-cut-liquidity-strain",
+    "published_at": "2026-10-09T14:42:00Z",
+    "title": "Boeing Credit Rating Cut as Liquidity Strain and Production Disruption Deepen",
+    "raw_text": "Boeing's senior debt rating was downgraded after worsening liquidity pressure, production disruption, and cash burn. Credit analysts expect wider bond spreads and higher default risk across the company's revolving credit facilities.",
+    "expected_ticker": "BA",
+    "expected_event": "Credit Event",
+    "expected_severity_min": 7.0,
+    "should_trigger_stress": true
   }
 ]

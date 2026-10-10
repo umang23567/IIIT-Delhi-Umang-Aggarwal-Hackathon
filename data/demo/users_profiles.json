@@ -2,12 +2,13 @@
   "users": [
     {
       "user_id": "usr_tech_desk",
-      "username": "sarah_chen",
+      "username": "sarah.chen",
+      "password": "password123",
       "display_name": "Sarah Chen",
-      "role": "Head of TMT Equity & Tech Risk",
+      "role": "Head of TMT Equity Strategy",
       "desk": "Technology, Media & Telecom (TMT) Desk",
       "portfolio_id": "TECH_SPECIALTY_BOOK",
-      "portfolio_name": "Silicon Valley & TMT Growth Fund ($125M)",
+      "portfolio_name": "Silicon Valley & TMT Growth Fund ($120M)",
       "watchlist": ["AAPL", "MSFT", "NVDA", "TSLA"],
       "positions": [
         {
@@ -47,7 +48,7 @@
           "issuer": "Tesla, Inc.",
           "sector": "Consumer Discretionary",
           "facility_type": "Tech Innovation Working Capital",
-          "ead": 15000000.0,
+          "ead": 10000000.0,
           "pd": 0.022,
           "lgd": 0.50,
           "currency": "USD"
@@ -56,9 +57,10 @@
     },
     {
       "user_id": "usr_credit_desk",
-      "username": "marcus_vance",
+      "username": "marcus.vance",
+      "password": "password123",
       "display_name": "Marcus Vance",
-      "role": "Chief Credit Officer - Wholesale Banking",
+      "role": "Chief Credit Officer",
       "desk": "Global Wholesale Credit & Industrials Desk",
       "portfolio_id": "WHOLESALE_CREDIT_BOOK",
       "portfolio_name": "Wholesale Corporate Lending & Industrial Debt ($240M)",
@@ -124,6 +126,18 @@
           "currency": "USD"
         }
       ]
+    },
+    {
+      "user_id": "usr_risk_admin",
+      "username": "admin",
+      "password": "adminpassword",
+      "display_name": "Executive Risk Oversight",
+      "role": "Global Head of Enterprise Risk Management",
+      "desk": "Central Enterprise Risk & Securities Master Desk",
+      "portfolio_id": "CONSOLIDATED_INSTITUTIONAL_BOOK",
+      "portfolio_name": "Consolidated Wholesale Banking Portfolio ($365M)",
+      "watchlist": ["AAPL", "MSFT", "NVDA", "JPM", "BAC", "C", "XOM", "CVX", "JNJ", "PFE", "BA", "TSLA", "AMZN", "GOOGL", "META"],
+      "positions": []
     }
   ]
 }

@@ -21,8 +21,14 @@ class FinBERTSentimentEngine:
     """
     MODEL_NAME = "ProsusAI/finbert"
 
-    def __init__(self, device: str = "auto", enable_transformer: bool = True):
+    def __init__(
+        self,
+        device: str = "auto",
+        enable_transformer: bool = True,
+        allow_fallback: bool = False,
+    ):
         self.device = device
+        self.allow_fallback = allow_fallback
         self.pipeline = None
         self.is_loaded = False
         self.model_version = "ProsusAI/finbert-v1.0"
@@ -37,20 +43,34 @@ class FinBERTSentimentEngine:
                 model = AutoModelForSequenceClassification.from_pretrained(self.MODEL_NAME)
                 
                 dev_idx = 0 if torch.cuda.is_available() else (-1)
-                self.pipeline = pipeline("text-classification", model=model, tokenizer=tokenizer, return_all_scores=True, device=dev_idx)
+                self.pipeline = pipeline(
+                    "text-classification",
+                    model=model,
+                    tokenizer=tokenizer,
+                    top_k=None,
+                    device=dev_idx,
+                )
                 self.is_loaded = True
                 logger.info("FinBERT successfully loaded into memory.")
             except Exception as e:
-                logger.warning(f"Transformer model initialization deferred or encountered issue: {e}. Active fallback ready.")
+                message = f"Unable to initialize FinBERT: {e}"
+                if not self.allow_fallback:
+                    raise RuntimeError(message) from e
+                logger.warning("%s. Active fallback enabled.", message)
                 self.model_version = "LoughranMcDonald-Lexicon-v2.0"
 
     def analyze(self, text: str) -> SentimentResult:
         if self.is_loaded and self.pipeline:
             try:
                 # Truncate text to 512 tokens
-                results = self.pipeline(text[:1500])[0]
+                results = self.pipeline(text[:1500])
+                # Transformers returns one score list per input when top_k=None.
+                score_items = results[0] if results and isinstance(results[0], list) else results
                 # FinBERT returns labels: positive, negative, neutral
-                prob_map = {item["label"].lower(): item["score"] for item in results}
+                prob_map = {
+                    item["label"].lower(): item["score"]
+                    for item in score_items
+                }
                 p_pos = float(prob_map.get("positive", 0.0))
                 p_neg = float(prob_map.get("negative", 0.0))
                 p_neu = float(prob_map.get("neutral", 0.0))
@@ -78,9 +98,13 @@ class FinBERTSentimentEngine:
                     model_version=self.model_version
                 )
             except Exception as e:
-                logger.error(f"Error during FinBERT inference: {e}. Falling back to domain lexicon.")
+                if not self.allow_fallback:
+                    raise RuntimeError(f"FinBERT inference failed: {e}") from e
+                logger.error("FinBERT inference failed: %s. Falling back to domain lexicon.", e)
 
         # Domain-adapted Financial Lexicon Fallback (Loughran-McDonald baseline)
+        if not self.allow_fallback:
+            raise RuntimeError("FinBERT is unavailable and fallback sentiment is disabled")
         return self._lexicon_fallback(text)
 
     def _lexicon_fallback(self, text: str) -> SentimentResult:
@@ -113,7 +137,7 @@ class FinBERTSentimentEngine:
                 sentiment_score=0.0,
                 sentiment_label="NEUTRAL",
                 confidence=0.70,
-                model_version=self.model_version
+                model_version="LoughranMcDonald-Lexicon-v2.0"
             )
 
         p_pos = pos_count / (total + 2.0)
@@ -138,5 +162,5 @@ class FinBERTSentimentEngine:
             sentiment_score=s_score,
             sentiment_label=label,
             confidence=round(conf, 4),
-            model_version=self.model_version
+            model_version="LoughranMcDonald-Lexicon-v2.0"
         )
