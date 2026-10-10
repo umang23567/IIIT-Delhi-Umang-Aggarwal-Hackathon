@@ -1,7 +1,10 @@
-# Python
+# Python bytecode and caches
 __pycache__/
 *.py[cod]
 *.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
 # Virtual environments
 venv/
@@ -12,6 +15,9 @@ ENV/
 # Environment variables / secrets
 .env
 .env.*
+!.env.example
+.streamlit/credentials.toml
+.streamlit/secrets.toml
 
 # Jupyter
 .ipynb_checkpoints/
@@ -19,7 +25,7 @@ ENV/
 # macOS
 .DS_Store
 
-# IDEs
+# IDEs and editor files
 .vscode/
 .idea/
 
@@ -31,5 +37,15 @@ dist/
 build/
 *.egg-info/
 
-# PS doc
+# Runtime data and generated outputs
+*.db
+*.sqlite
+*.sqlite3
+output/
+
+# Local model and tool caches
+.cache/
+.huggingface/
+
+# Local instruction files are not submission deliverables
 Instructions/

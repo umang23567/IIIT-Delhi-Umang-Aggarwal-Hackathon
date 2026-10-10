@@ -1,13 +1,19 @@
-pandas>=2.0
-numpy>=1.26
-streamlit>=1.35
-plotly>=5.20
-fastapi>=0.110
-uvicorn>=0.29
-matplotlib>=3.8
-requests
-yfinance
-# optional: real prices / transformer sentiment
-# yfinance
-# transformers
-# torch
+# Core dependencies for S&P Global & CRISIL Financial Risk Engine
+fastapi>=0.100.0
+uvicorn>=0.22.0
+pydantic>=2.0.0
+streamlit>=1.28.0
+pandas>=2.0.0
+numpy>=1.24.0
+plotly>=5.15.0
+requests>=2.31.0
+feedparser>=6.0.10
+python-dateutil>=2.8.2
+
+# NLP & Machine Learning (FinBERT & SOTA Transformers)
+torch>=2.0.0
+transformers>=4.30.0
+scikit-learn>=1.3.0
+
+# Testing
+pytest>=7.4.0

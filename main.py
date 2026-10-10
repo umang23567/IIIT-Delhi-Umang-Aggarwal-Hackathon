@@ -1,30 +1,31 @@
-"""CLI entry point.  python main.py all   |  gen-data  |  brief  |  analyze "text" """
-import argparse
-import json
-
+import os
+import sys
 
 def main():
-    ap = argparse.ArgumentParser(description="ContagionLens")
-    ap.add_argument("cmd", choices=["all", "gen-data", "brief", "analyze"])
-    ap.add_argument("text", nargs="?", default="")
-    ap.add_argument("--regen", action="store_true", help="regenerate synthetic data")
-    a = ap.parse_args()
-    if a.cmd == "gen-data":
-        from src.data_gen import generate
-        print("news, tweets:", generate())
-    elif a.cmd == "all":
-        from src.pipeline import run_all
-        v = run_all(regen=a.regen)
-        print(json.dumps(v["backtest"], indent=1))
-        print("IC:", json.dumps(v["ic"]))
-        print("Outputs written to ./output  |  dashboard: streamlit run src/dashboard.py")
-    elif a.cmd == "brief":
-        print(open("output/brief.md").read())
-    elif a.cmd == "analyze":
-        from src.nlp import analyze
-        r = analyze(a.text, "news")
-        print(json.dumps(r, indent=1, default=str))
+    print("=" * 70)
+    print("S&P Global & CRISIL - Enterprise Financial NLP Risk Platform")
+    print("=" * 70)
+    print("Launching Executive Risk Intelligence Cockpit on http://localhost:8501 ...")
 
+    # Bypass credentials file check & disable file watchers
+    os.environ["STREAMLIT_SERVER_HEADLESS"] = "true"
+    os.environ["STREAMLIT_BROWSER_GATHER_USAGE_STATS"] = "false"
+    os.environ["STREAMLIT_SERVER_FILE_WATCHER_TYPE"] = "none"
+
+    import streamlit.web.bootstrap as bootstrap
+    from streamlit import config
+    import streamlit.runtime.credentials as cred
+
+    # Mock credentials check so it never prompts in terminal
+    cred._check_credential = lambda: None
+
+    config.set_option("server.headless", True)
+    config.set_option("server.port", 8501)
+    config.set_option("browser.gatherUsageStats", False)
+    config.set_option("server.fileWatcherType", "none")
+
+    script_path = os.path.join(os.path.dirname(__file__), "src", "dashboard", "app.py")
+    bootstrap.run(script_path, False, [], flag_options={})
 
 if __name__ == "__main__":
     main()

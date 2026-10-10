@@ -1,0 +1,80 @@
+[
+  {
+    "feed_id": "REPLAY_001",
+    "source_type": "News",
+    "source_name": "Reuters Financial Wire",
+    "url": "https://reuters.com/business/aerospace-defense/boeing-credit-rating-downgraded-bbb-minus-fitch-2024",
+    "published_at": "2026-10-09T14:30:00Z",
+    "title": "Boeing Debt Downgraded to One Notch Above Junk Following Staggering Cash Burn and Strike Disruption",
+    "raw_text": "Fitch Ratings has officially downgraded The Boeing Company senior unsecured debt to BBB-minus, placing the planemaker on negative outlook. The agency cited deepening liquidity strain, severe supply chain bottlenecks, and an ongoing manufacturing halt. Analysts warn of sharp bond spread widening and ballooning default risk on revolving credit lines.",
+    "expected_ticker": "BA",
+    "expected_event": "Credit Event",
+    "expected_severity_min": 8.0,
+    "should_trigger_stress": true
+  },
+  {
+    "feed_id": "REPLAY_002",
+    "source_type": "Social / News Wire",
+    "source_name": "Bloomberg Markets",
+    "url": "https://bloomberg.com/news/articles/geopolitical-strait-hormuz-blockade-crude-oil-surge",
+    "published_at": "2026-10-09T15:15:00Z",
+    "title": "Escalating Geopolitical Conflict in Middle East Shuts Key Maritime Corridors, Crude Surges 12%",
+    "raw_text": "Military escalations and drone strikes have crippled commercial shipping along vital maritime chokepoints. Oil benchmark Brent surged 12% in hours, triggering broad global equity sell-offs, emergency safe-haven bond bids, and heightened sovereign and supply chain vulnerability across wholesale banking exposures.",
+    "expected_ticker": null,
+    "expected_event": "Geopolitical",
+    "expected_severity_min": 7.5,
+    "should_trigger_stress": true
+  },
+  {
+    "feed_id": "REPLAY_003",
+    "source_type": "News",
+    "source_name": "Wall Street Journal",
+    "url": "https://wsj.com/economy/central-banks/federal-reserve-surprise-50bps-hike-inflation-spike",
+    "published_at": "2026-10-09T16:00:00Z",
+    "title": "Federal Reserve Stuns Markets With Surprise 50 Bps Interest Rate Hike as Inflation Reaccelerates",
+    "raw_text": "In an emergency inter-meeting decision, the Federal Reserve raised benchmark interest rates by 50 basis points. Fed Chairman warned of persistent sticky wage inflation. Global bond yields spiked violently across the 2-year and 10-year curve, sending interest rate swap markets into turmoil and pummeling rate-sensitive equities.",
+    "expected_ticker": null,
+    "expected_event": "Macroeconomic",
+    "expected_severity_min": 8.0,
+    "should_trigger_stress": true
+  },
+  {
+    "feed_id": "REPLAY_004",
+    "source_type": "News",
+    "source_name": "CNBC Tech",
+    "url": "https://cnbc.com/tech/nvidia-unveils-next-gen-quantum-ai-superchips-earnings-beat",
+    "published_at": "2026-10-09T16:45:00Z",
+    "title": "NVIDIA Blows Past Wall Street Forecasts With 140% Revenue Growth and Unveils Revolutionary Architecture",
+    "raw_text": "NVIDIA Corporation delivered record-shattering quarterly results, posting $36 billion in data center revenue and exceptional net profit margins. CEO Jensen Huang announced unprecedented demand from hyperscalers for its newest computing clusters, prompting upgraded Wall Street equity price targets.",
+    "expected_ticker": "NVDA",
+    "expected_event": "Product Launch",
+    "expected_severity_min": 4.0,
+    "should_trigger_stress": false
+  },
+  {
+    "feed_id": "REPLAY_005",
+    "source_type": "News",
+    "source_name": "Financial Times",
+    "url": "https://ft.com/content/citigroup-regulatory-consent-order-risk-controls",
+    "published_at": "2026-10-09T17:10:00Z",
+    "title": "Regulators Impose $136 Million Fine on Citigroup for Chronic Data Governance Deficiencies",
+    "raw_text": "The Federal Reserve and OCC have levied a fresh $136 million civil penalty against Citigroup Inc. for insufficient progress in addressing data quality controls and operational risk governance. Regulators ordered structural audits, increasing scrutiny on capital distributions and legal provisions.",
+    "expected_ticker": "C",
+    "expected_event": "Regulatory/Legal",
+    "expected_severity_min": 7.0,
+    "should_trigger_stress": true
+  },
+  {
+    "feed_id": "REPLAY_006",
+    "source_type": "Social Media / Blog",
+    "source_name": "FinTech Rumor Board",
+    "url": "https://rumorboard.net/post/apple-watch-new-band-color-options",
+    "published_at": "2026-10-09T18:00:00Z",
+    "title": "Apple Rumored to Release Three New Pastel Colors for Apple Watch Sport Band Next Spring",
+    "raw_text": "According to supply chain leaks on Weibo, Apple may be preparing to update its watch accessory catalog with lavender and mint silicone wrist straps. No hardware or pricing modifications are anticipated.",
+    "expected_ticker": "AAPL",
+    "expected_event": "Product Launch",
+    "expected_severity_min": 1.5,
+    "should_trigger_stress": false
+  }
+]

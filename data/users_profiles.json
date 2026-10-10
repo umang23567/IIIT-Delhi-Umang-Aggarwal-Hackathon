@@ -1,0 +1,129 @@
+{
+  "users": [
+    {
+      "user_id": "usr_tech_desk",
+      "username": "sarah_chen",
+      "display_name": "Sarah Chen",
+      "role": "Head of TMT Equity & Tech Risk",
+      "desk": "Technology, Media & Telecom (TMT) Desk",
+      "portfolio_id": "TECH_SPECIALTY_BOOK",
+      "portfolio_name": "Silicon Valley & TMT Growth Fund ($125M)",
+      "watchlist": ["AAPL", "MSFT", "NVDA", "TSLA"],
+      "positions": [
+        {
+          "position_id": "EQ_AAPL_01",
+          "asset_type": "Equity",
+          "ticker": "AAPL",
+          "issuer": "Apple Inc.",
+          "sector": "Information Technology",
+          "market_value": 35000000.0,
+          "beta": 1.15,
+          "currency": "USD"
+        },
+        {
+          "position_id": "EQ_NVDA_01",
+          "asset_type": "Equity",
+          "ticker": "NVDA",
+          "issuer": "NVIDIA Corporation",
+          "sector": "Information Technology",
+          "market_value": 45000000.0,
+          "beta": 1.75,
+          "currency": "USD"
+        },
+        {
+          "position_id": "EQ_MSFT_01",
+          "asset_type": "Equity",
+          "ticker": "MSFT",
+          "issuer": "Microsoft Corporation",
+          "sector": "Information Technology",
+          "market_value": 30000000.0,
+          "beta": 1.10,
+          "currency": "USD"
+        },
+        {
+          "position_id": "LOAN_TSLA_REV_01",
+          "asset_type": "Loan",
+          "ticker": "TSLA",
+          "issuer": "Tesla, Inc.",
+          "sector": "Consumer Discretionary",
+          "facility_type": "Tech Innovation Working Capital",
+          "ead": 15000000.0,
+          "pd": 0.022,
+          "lgd": 0.50,
+          "currency": "USD"
+        }
+      ]
+    },
+    {
+      "user_id": "usr_credit_desk",
+      "username": "marcus_vance",
+      "display_name": "Marcus Vance",
+      "role": "Chief Credit Officer - Wholesale Banking",
+      "desk": "Global Wholesale Credit & Industrials Desk",
+      "portfolio_id": "WHOLESALE_CREDIT_BOOK",
+      "portfolio_name": "Wholesale Corporate Lending & Industrial Debt ($240M)",
+      "watchlist": ["BA", "C", "XOM", "JPM"],
+      "positions": [
+        {
+          "position_id": "BOND_BA_05Y",
+          "asset_type": "Bond",
+          "ticker": "BA",
+          "issuer": "The Boeing Company",
+          "sector": "Industrials",
+          "market_value": 45000000.0,
+          "duration": 4.8,
+          "credit_spread_bps": 165.0,
+          "rating": "BBB",
+          "currency": "USD"
+        },
+        {
+          "position_id": "BOND_C_07Y",
+          "asset_type": "Bond",
+          "ticker": "C",
+          "issuer": "Citigroup Inc.",
+          "sector": "Financials",
+          "market_value": 55000000.0,
+          "duration": 5.6,
+          "credit_spread_bps": 140.0,
+          "rating": "BBB",
+          "currency": "USD"
+        },
+        {
+          "position_id": "LOAN_BA_SYND_01",
+          "asset_type": "Loan",
+          "ticker": "BA",
+          "issuer": "The Boeing Company",
+          "sector": "Industrials",
+          "facility_type": "Revolving Credit Line",
+          "ead": 40000000.0,
+          "pd": 0.018,
+          "lgd": 0.45,
+          "currency": "USD"
+        },
+        {
+          "position_id": "LOAN_C_TERM_01",
+          "asset_type": "Loan",
+          "ticker": "C",
+          "issuer": "Citigroup Inc.",
+          "sector": "Financials",
+          "facility_type": "Senior Secured Term Loan",
+          "ead": 50000000.0,
+          "pd": 0.012,
+          "lgd": 0.40,
+          "currency": "USD"
+        },
+        {
+          "position_id": "SWAP_IRS_10Y_PAY",
+          "asset_type": "Swap",
+          "ticker": null,
+          "issuer": "Macro / Global Markets",
+          "sector": "Rates & Derivatives",
+          "notional": 100000000.0,
+          "dv01": 85000.0,
+          "pay_receive": "Pay Fixed / Receive Float",
+          "currency": "USD"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "ticker": "AAPL",
+    "name": "Apple Inc.",
+    "sector": "Information Technology",
+    "aliases": ["apple", "apple inc", "aapl", "tim cook", "iphone", "ipad", "macbook"],
+    "beta": 1.15,
+    "credit_rating": "AAA"
+  },
+  {
+    "ticker": "MSFT",
+    "name": "Microsoft Corporation",
+    "sector": "Information Technology",
+    "aliases": ["microsoft", "msft", "satya nadella", "azure", "windows"],
+    "beta": 1.10,
+    "credit_rating": "AAA"
+  },
+  {
+    "ticker": "NVDA",
+    "name": "NVIDIA Corporation",
+    "sector": "Information Technology",
+    "aliases": ["nvidia", "nvda", "jensen huang", "geforce", "blackwell", "h100"],
+    "beta": 1.75,
+    "credit_rating": "AA"
+  },
+  {
+    "ticker": "JPM",
+    "name": "JPMorgan Chase & Co.",
+    "sector": "Financials",
+    "aliases": ["jpmorgan", "jpmorgan chase", "jpm", "jamie dimon", "chase bank"],
+    "beta": 1.05,
+    "credit_rating": "A"
+  },
+  {
+    "ticker": "BAC",
+    "name": "Bank of America Corp",
+    "sector": "Financials",
+    "aliases": ["bank of america", "bofa", "bac", "brian moynihan"],
+    "beta": 1.20,
+    "credit_rating": "A"
+  },
+  {
+    "ticker": "C",
+    "name": "Citigroup Inc.",
+    "sector": "Financials",
+    "aliases": ["citigroup", "citi", "citibank", "jane fraser"],
+    "beta": 1.35,
+    "credit_rating": "BBB"
+  },
+  {
+    "ticker": "XOM",
+    "name": "Exxon Mobil Corporation",
+    "sector": "Energy",
+    "aliases": ["exxon", "exxon mobil", "exxonmobil", "xom", "darren woods"],
+    "beta": 0.85,
+    "credit_rating": "AA"
+  },
+  {
+    "ticker": "CVX",
+    "name": "Chevron Corporation",
+    "sector": "Energy",
+    "aliases": ["chevron", "cvx", "mike wirth"],
+    "beta": 0.90,
+    "credit_rating": "AA"
+  },
+  {
+    "ticker": "JNJ",
+    "name": "Johnson & Johnson",
+    "sector": "Healthcare",
+    "aliases": ["johnson & johnson", "j&j", "jnj"],
+    "beta": 0.55,
+    "credit_rating": "AAA"
+  },
+  {
+    "ticker": "PFE",
+    "name": "Pfizer Inc.",
+    "sector": "Healthcare",
+    "aliases": ["pfizer", "pfe", "albert bourla"],
+    "beta": 0.65,
+    "credit_rating": "A"
+  },
+  {
+    "ticker": "BA",
+    "name": "The Boeing Company",
+    "sector": "Industrials",
+    "aliases": ["boeing", "ba", "boeing co", "737 max", "kelly ortberg"],
+    "beta": 1.45,
+    "credit_rating": "BBB"
+  },
+  {
+    "ticker": "TSLA",
+    "name": "Tesla, Inc.",
+    "sector": "Consumer Discretionary",
+    "aliases": ["tesla", "tsla", "elon musk", "cybertruck"],
+    "beta": 1.85,
+    "credit_rating": "BBB"
+  },
+  {
+    "ticker": "AMZN",
+    "name": "Amazon.com, Inc.",
+    "sector": "Consumer Discretionary",
+    "aliases": ["amazon", "amzn", "andy jassy", "aws"],
+    "beta": 1.25,
+    "credit_rating": "AA"
+  },
+  {
+    "ticker": "GOOGL",
+    "name": "Alphabet Inc.",
+    "sector": "Communication Services",
+    "aliases": ["alphabet", "google", "googl", "goog", "sundar pichai", "youtube"],
+    "beta": 1.20,
+    "credit_rating": "AA"
+  },
+  {
+    "ticker": "META",
+    "name": "Meta Platforms, Inc.",
+    "sector": "Communication Services",
+    "aliases": ["meta", "facebook", "mark zuckerberg", "instagram", "meta platforms"],
+    "beta": 1.30,
+    "credit_rating": "A"
+  }
+]

@@ -1,0 +1,154 @@
+{
+  "portfolio_id": "WHOLESALE_GLOBAL_CREDIT_01",
+  "name": "Wholesale Banking Multi-Asset Corporate & Markets Book",
+  "base_currency": "USD",
+  "positions": [
+    {
+      "position_id": "EQ_AAPL_01",
+      "asset_type": "Equity",
+      "ticker": "AAPL",
+      "issuer": "Apple Inc.",
+      "sector": "Information Technology",
+      "market_value": 25000000.0,
+      "beta": 1.15,
+      "currency": "USD"
+    },
+    {
+      "position_id": "EQ_NVDA_01",
+      "asset_type": "Equity",
+      "ticker": "NVDA",
+      "issuer": "NVIDIA Corporation",
+      "sector": "Information Technology",
+      "market_value": 30000000.0,
+      "beta": 1.75,
+      "currency": "USD"
+    },
+    {
+      "position_id": "EQ_JPM_01",
+      "asset_type": "Equity",
+      "ticker": "JPM",
+      "issuer": "JPMorgan Chase & Co.",
+      "sector": "Financials",
+      "market_value": 20000000.0,
+      "beta": 1.05,
+      "currency": "USD"
+    },
+    {
+      "position_id": "EQ_BA_01",
+      "asset_type": "Equity",
+      "ticker": "BA",
+      "issuer": "The Boeing Company",
+      "sector": "Industrials",
+      "market_value": 15000000.0,
+      "beta": 1.45,
+      "currency": "USD"
+    },
+    {
+      "position_id": "EQ_XOM_01",
+      "asset_type": "Equity",
+      "ticker": "XOM",
+      "issuer": "Exxon Mobil Corporation",
+      "sector": "Energy",
+      "market_value": 18000000.0,
+      "beta": 0.85,
+      "currency": "USD"
+    },
+    {
+      "position_id": "BOND_BA_05Y",
+      "asset_type": "Bond",
+      "ticker": "BA",
+      "issuer": "The Boeing Company",
+      "sector": "Industrials",
+      "market_value": 40000000.0,
+      "notional": 40000000.0,
+      "duration": 4.8,
+      "credit_spread_bps": 165.0,
+      "rating": "BBB",
+      "currency": "USD"
+    },
+    {
+      "position_id": "BOND_C_07Y",
+      "asset_type": "Bond",
+      "ticker": "C",
+      "issuer": "Citigroup Inc.",
+      "sector": "Financials",
+      "market_value": 50000000.0,
+      "notional": 50000000.0,
+      "duration": 5.6,
+      "credit_spread_bps": 140.0,
+      "rating": "BBB",
+      "currency": "USD"
+    },
+    {
+      "position_id": "BOND_MSFT_10Y",
+      "asset_type": "Bond",
+      "ticker": "MSFT",
+      "issuer": "Microsoft Corporation",
+      "sector": "Information Technology",
+      "market_value": 60000000.0,
+      "notional": 60000000.0,
+      "duration": 7.2,
+      "credit_spread_bps": 45.0,
+      "rating": "AAA",
+      "currency": "USD"
+    },
+    {
+      "position_id": "LOAN_BA_SYND_01",
+      "asset_type": "Loan",
+      "ticker": "BA",
+      "issuer": "The Boeing Company",
+      "sector": "Industrials",
+      "facility_type": "Revolving Credit Line",
+      "ead": 35000000.0,
+      "pd": 0.018,
+      "lgd": 0.45,
+      "currency": "USD"
+    },
+    {
+      "position_id": "LOAN_C_TERM_01",
+      "asset_type": "Loan",
+      "ticker": "C",
+      "issuer": "Citigroup Inc.",
+      "sector": "Financials",
+      "facility_type": "Senior Secured Term Loan",
+      "ead": 45000000.0,
+      "pd": 0.012,
+      "lgd": 0.40,
+      "currency": "USD"
+    },
+    {
+      "position_id": "LOAN_TSLA_REV_01",
+      "asset_type": "Loan",
+      "ticker": "TSLA",
+      "issuer": "Tesla, Inc.",
+      "sector": "Consumer Discretionary",
+      "facility_type": "Working Capital Facility",
+      "ead": 25000000.0,
+      "pd": 0.022,
+      "lgd": 0.50,
+      "currency": "USD"
+    },
+    {
+      "position_id": "SWAP_IRS_10Y_PAY",
+      "asset_type": "Swap",
+      "ticker": null,
+      "issuer": "Macro / Global Markets",
+      "sector": "Rates & Derivatives",
+      "notional": 100000000.0,
+      "dv01": 85000.0,
+      "pay_receive": "Pay Fixed / Receive Float",
+      "currency": "USD"
+    },
+    {
+      "position_id": "SWAP_IRS_05Y_REC",
+      "asset_type": "Swap",
+      "ticker": null,
+      "issuer": "Macro / Global Markets",
+      "sector": "Rates & Derivatives",
+      "notional": 80000000.0,
+      "dv01": -42000.0,
+      "pay_receive": "Receive Fixed / Pay Float",
+      "currency": "USD"
+    }
+  ]
+}
