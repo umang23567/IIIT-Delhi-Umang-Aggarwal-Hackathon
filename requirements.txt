@@ -1,4 +1,4 @@
-# Core dependencies for S&P Global & CRISIL Financial Risk Engine
+# Core dependencies for Engine
 fastapi>=0.100.0
 uvicorn>=0.22.0
 pydantic>=2.0.0
@@ -10,7 +10,7 @@ requests>=2.31.0
 feedparser>=6.0.10
 python-dateutil>=2.8.2
 
-# NLP & Machine Learning (FinBERT & SOTA Transformers)
+# NLP & Machine Learning
 torch>=2.0.0
 transformers>=4.30.0
 scikit-learn>=1.3.0

@@ -20,16 +20,21 @@ PHRASEBANK = next(
     ),
     EXTERNAL / "financial_phrasebank.csv",
 )
+_US_NEWS_ROOT = EXTERNAL / "us_financial_news"
 US_NEWS_MONTH = next(
     (
         path
         for path in (
-            EXTERNAL / "us_financial_news" / "2018_03",
-            EXTERNAL / "US Financial News Articles" / "2018_03_112b52537b67659ad3609a234388c50a",
+            _US_NEWS_ROOT / "2018_03",
+            _US_NEWS_ROOT / "2018_03_112b52537b67659ad3609a234388c50a",
+            *_US_NEWS_ROOT.glob("2018_03_*"),
+            EXTERNAL
+            / "US Financial News Articles"
+            / "2018_03_112b52537b67659ad3609a234388c50a",
         )
-        if path.exists()
+        if path.is_dir()
     ),
-    EXTERNAL / "us_financial_news" / "2018_03",
+    _US_NEWS_ROOT / "2018_03",
 )
 
 
