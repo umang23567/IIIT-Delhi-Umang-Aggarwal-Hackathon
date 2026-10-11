@@ -9,6 +9,9 @@
 **College:** Indraprastha Institute of Information Technology, Delhi
 
 
+**College Email:** umang23567@iiitd.ac.in
+
+
 **Demo video:** [Link](https://youtu.be/7gI834q1X_E)
 
 
@@ -106,7 +109,9 @@ venv\Scripts\activate
 python main.py
 ```
 
-Then open `http://localhost:8501`.
+Then open `http://localhost:8501`.  
+
+Note: Running the app first time may take a few minutes to set up and load all the models into the cache.
 
 The dashboard's **Demo data** toggle controls the input mode:
 
