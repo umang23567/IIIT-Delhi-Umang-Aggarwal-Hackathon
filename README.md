@@ -185,3 +185,7 @@ The suite includes an ingestion test for the US Financial News Articles sample. 
 This submission focuses on demonstrating the complete path from financial news to explainable portfolio risk. To keep that demonstration reproducible, the project uses curated reference data, synthetic portfolios, deterministic replay scenarios, and transparent illustrative stress assumptions. These choices make it possible to inspect every stage of the workflow and reproduce the dashboard results locally.
 
 The same architecture can be extended with institution-specific portfolios, calibrated market scenarios, larger historical evaluation sets, and production data services. Live RSS results naturally depend on network access and publisher feed availability, while SQLite and the demo authentication flow are intentionally lightweight for this prototype.
+
+## 8. AI Assistance Disclosure
+
+AI tools were used as development assistance for code explanation, debugging, documentation and test-writing. I directed the project design and retained responsibility for implementation decisions, data choices, validation and the final submission.
