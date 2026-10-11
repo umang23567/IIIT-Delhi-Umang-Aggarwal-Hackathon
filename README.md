@@ -9,7 +9,7 @@
 **College:** Indraprastha Institute of Information Technology, Delhi
 
 
-**Demo video:** [Link](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+**Demo video:** [Link](https://youtu.be/7gI834q1X_E)
 
 
 **Presentation deck:** [PDF](docs/presentation.pdf)

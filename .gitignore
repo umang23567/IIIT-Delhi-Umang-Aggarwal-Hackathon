@@ -32,6 +32,9 @@ ENV/
 # Logs
 *.log
 
+# Local recordings
+recordings/
+
 # Build/cache
 dist/
 build/
