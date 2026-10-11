@@ -6,13 +6,13 @@
 **Candidate:** Umang Aggarwal
 
 
-**College:** Indraprastha Institute of Information Technology Delhi (IIIT-Delhi)
+**College:** Indraprastha Institute of Information Technology, Delhi
 
 
-**Demo video:** `To be added after recording`
+**Demo video:** [Link](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
 
 
-**Presentation deck:** `docs/presentation.pdf`
+**Presentation deck:** [PDF](docs/presentation.pdf)
 
 ## 1. Project Overview
 
